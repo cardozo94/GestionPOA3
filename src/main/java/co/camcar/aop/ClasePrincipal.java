@@ -13,9 +13,16 @@ public class ClasePrincipal {
 		//obtener el bean del contenedor de Spring
 		
 		ClienteDao cliente = context.getBean("clienteDao", ClienteDao.class);
-		cliente.encuentraClientes();
 		
-		System.out.println("Continua ejecuccón del programa.");
+		boolean param = false;
+		try {
+			cliente.encuentraClientes( param);
+		}catch (Exception e) {
+			System.out.println("Excepción lanzada desde la clase principal.");
+			System.err.println(e.getMessage());
+		}
+		
+		System.out.println("Continua ejecución del programa.");
 		
 		//Cerrar el contexto
 		context.close();
