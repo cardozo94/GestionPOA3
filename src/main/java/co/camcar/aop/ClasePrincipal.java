@@ -3,6 +3,7 @@ package co.camcar.aop;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import co.camcar.aop.dao.ClienteDao;
+import co.camcar.aop.servicios.MedicionServicio;
 
 public class ClasePrincipal {
 
@@ -12,7 +13,7 @@ public class ClasePrincipal {
 		
 		//obtener el bean del contenedor de Spring
 		
-		ClienteDao cliente = context.getBean("clienteDao", ClienteDao.class);
+		/*ClienteDao cliente = context.getBean("clienteDao", ClienteDao.class);
 		
 		boolean param = false;
 		try {
@@ -22,7 +23,16 @@ public class ClasePrincipal {
 			System.err.println(e.getMessage());
 		}
 		
-		System.out.println("Continua ejecución del programa.");
+		System.out.println("Continua ejecución del programa.");*/
+		
+		MedicionServicio servicio = context.getBean("medicionServicio", MedicionServicio.class);
+		
+		System.out.println("Llamado el método getServicio().");
+		
+		String datos = servicio.getServicio();
+		
+		System.out.println("Resultado del servicio: "+datos);
+		
 		
 		//Cerrar el contexto
 		context.close();

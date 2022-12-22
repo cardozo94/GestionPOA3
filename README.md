@@ -1,9 +1,9 @@
 # Gestion POA 3
 
 This is a project that I create following the tutorial on youtube [Curso Spring][def] to learn Spring. In this project I play with Aspect Oriented Programming paradigm in Spring. aspectjweaver dependency helps with all classes that we need to handle aspects. 
-Here, I work on how to execute an aspect after determine method and inject the result of that method in the aspect (@AfterReturning), processing these results, process when a method throw an exception (@AfterThrowing) 
-and process when a method ends if it throws an exception or not (@After).
-It has some dependecies:
+Here, I work on how to execute an aspect after determine method and inject the result of that method in the aspect (@AfterReturning), processing these results, process when a method throw an exception (@AfterThrowing), 
+process when a method ends if it throws an exception or not (@After) and how pre and post process from a method (@Around)
+It has some dependencies:
 
 - spring-instrument-5.1.4.RELEASE-sources.jar
 - spring-jcl-5.1.4.RELEASE-javadoc.jar

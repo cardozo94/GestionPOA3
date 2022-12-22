@@ -4,9 +4,11 @@ package co.camcar.aop.aspectos;
 import java.util.List;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -67,5 +69,17 @@ public class LoginConAspecto {
 	@After("execution(* co.camcar.aop.dao.ClienteDao.encuentraClientes(..))")
 	public void ejecutandoTareasConYSinExcepcion(JoinPoint point) {
 		System.out.println("Ejecutando tareas SIEMPRE!!!");
+	}
+	
+	@Around("execution(* co.camcar.aop.servicios.*.getServicio(..))")
+	public Object ejecutarServicio(ProceedingJoinPoint point) throws Throwable {
+		System.out.println("--- Comienzo de acciones antes de llamada ---");
+		long comienzo = System.currentTimeMillis();
+		Object resultado = point.proceed();// point apunta el método destino y se ejecuta
+		System.out.println("--- tareas después de llamada ---");
+		long fin = System.currentTimeMillis();
+		long duracion = fin -comienzo;
+		System.out.println("El método tardo "+duracion/1000+" seg");
+		return resultado;
 	}
 }
